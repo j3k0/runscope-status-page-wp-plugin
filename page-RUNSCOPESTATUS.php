@@ -25,6 +25,26 @@ the_post();
 	</div>
 </div>
 
+<?php
+$args = array( 'posts_per_page' => 3 );
+$lastposts = get_posts( $args );
+foreach ( $lastposts as $post ) :
+  setup_postdata( $post ); ?>
+	<div class="rsp_section rsp_group" style="margin-top: 2em">
+	<div class="rsp_col rsp_span_1_of_12">
+		&nbsp;
+	</div>
+	<div class="rsp_col rsp_span_10_of_12">
+	<h2><?php the_title(); ?></h2>
+	<?php the_content(); ?>
+	</div>
+	<div class="rsp_col rsp_span_1_of_12">
+		&nbsp;
+	</div>
+	</div>
+<?php endforeach;
+wp_reset_postdata(); ?>
+
 <script>
 jQuery(document).ready(function($) {
 	function display_test_results() {
